@@ -51,6 +51,7 @@ module.exports.policies = {
 	// }
   UserController: {
     login : true,
-    hi: 'isCreate'
+    hi: 'isCreate',
+    delUser: 'isAdmin'
   }
 };

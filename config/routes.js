@@ -36,12 +36,20 @@ module.exports.routes = {
     view: 'homepage'
   },
 
+  //添加用户
   'post /add': 'UserController.addUser',
+  //获得所有用户
   'get /getAll': 'UserController.getAll',
+  //根据用户名获得用户
   'get /getUser/:name': 'UserController.getUser',
+  //删除用户
   'delete /delUser/:id': 'UserController.delUser',
+  //登录
   'post /login' : 'UserController.login',
-  'get /logout' : 'UserController.logout'
+  //登出
+  'get /logout' : 'UserController.logout',
+  //md5
+  'get /md5': 'UserController.md5'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

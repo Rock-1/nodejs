@@ -10,6 +10,6 @@ module.exports = function (req, res, next) {
         return next();
     }
     else {
-        return res.json({params:'请先登录'});
+        return res.json({params:'Please log in first'});
     }
 };

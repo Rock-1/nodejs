@@ -4,7 +4,10 @@
  * @description :: Server-side logic for managing users
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+
 var passport = require('passport');
+var crypto = require('crypto');
+
 module.exports = {
   /**
    * 添加用户
@@ -50,7 +53,7 @@ module.exports = {
     console.dir(req.session.user);
     User.find()
       .then(function (data) {
-        res.json(data);
+        res.json({count:data.length,data:data});
       }).catch(function (err) {
         res.send(err);
     })
@@ -83,7 +86,7 @@ module.exports = {
     var user = req.body;
     User.findOne({'Name':user.name})
       .then(function (data) {
-        console.log(user);
+        sails.log(user);
         console.log("====================");
         console.dir(data);
         if(!data){
@@ -110,7 +113,15 @@ module.exports = {
   logout: function (req, res) {
     req.session.user = null;
     res.json({status:201})
-  }
+  },
+  md5 : function (req,res) {
+    const secret = 'abcdefg';
+    const hash = crypto.createHmac('sha256', secret)
+      .update('I love cupcakes')
+      .digest('hex');
+    console.log(hash);
 
+    res.json(hash);
+  }
 };
 
