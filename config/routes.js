@@ -39,7 +39,9 @@ module.exports.routes = {
   'post /add': 'UserController.addUser',
   'get /getAll': 'UserController.getAll',
   'get /getUser/:name': 'UserController.getUser',
-  'delete /delUser/:id': 'UserController.delUser'
+  'delete /delUser/:id': 'UserController.delUser',
+  'post /login' : 'UserController.login',
+  'get /logout' : 'UserController.logout'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

@@ -27,6 +27,7 @@ module.exports.policies = {
   ***************************************************************************/
 
   // '*': true,
+  '*': 'islogin',
 
   /***************************************************************************
   *                                                                          *
@@ -49,6 +50,7 @@ module.exports.policies = {
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
   UserController: {
+    login : true,
     hi: 'isCreate'
   }
 };
