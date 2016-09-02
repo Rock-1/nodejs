@@ -35,6 +35,18 @@ module.exports.routes = {
   '/': {
     view: 'homepage'
   },
+  // 'get /home': {
+  //   view: 'index.html'
+  // },
+  // 'get /login': {
+  //   view: 'login.html'
+  // },
+  // 'get /register':{
+  //   view :'register'
+  // },
+  // 'get /layout':{
+  //   view :'layout'
+  // },
 
   //添加用户
   'post /add': 'UserController.addUser',

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>gulp-demo</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
+  <link href="//cdn.bootcss.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" rel="stylesheet">
+
+  <script src="./js/angular.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+
+</head>
+<style>
+  body{
+
+  }
+  .vertical-center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .size{
+    width:200px;
+    height: 200px;
+    background: #8BC34A;
+  }
+  .example1{
+    border-radius:100px;
+  }
+  /*div*/
+  /*{*/
+  /*border:2px solid;*/
+  /*border-radius:5px;*/
+  /*}*/
+</style>
+<body ng-app="myApp" ng-controller="userCtrl" class="vertical-center">
+
+<h2 style="align-content: center">注册</h2>
+<div  style="align-content: center">
+  姓名  ：<input type="text" class="in" ng-model = "addUser.Name" placeholder="姓名"><br>
+  密码  ：<input type="password" ng-model="addUser.password"><br>
+  email ：<input type="email">
+  <div >
+    验证码:<input type="text" style="vertical-align:middle;">
+    <img style="-webkit-user-select: none;vertical-align:middle;" src="/vcode" onclick="this.src='/vcode'" >
+  </div>
+</div>
+{{name}}{{pw}}
+
+<button class="btn" ng-click = 'add()'>注册</button>
+<button class="btn btn-success" ng-click = 'login()' >login</button>
+<button class="btn btn-secess" ng-click = 'logout()'>logout</button>
+<button  class="btn btn-info" ng-click="getAll()">查看所有用户</button>
+<div >
+  <li ng-repeat="x in users">
+    {{x.Name}}
+    <button ng-click="delUser(x.id)">删除</button>
+  </li>
+</div>
+
+</body>
+<script>
+  var app = angular.module('myApp', []);
+  app.controller('userCtrl', function($scope,$http) {
+    $scope.name ;
+    $scope.pw;
+    $scope.users = [];
+
+    $scope.data = {
+      "name":"admin",
+      "email":"123@12.com",
+      "password":"123456"
+    };
+    $scope.addUser = {
+      "Name":'张三',
+      "email":"123@12.com",
+      "password":'123456',
+      "siteDesc":"这是个语言",
+      "isAdmin":false
+    };
+
+    $scope.login = function () {
+      $.ajax({
+        type : "POST",
+        url : "/login",
+        data:$scope.data,
+        //dataType : "jsonp",
+        //jsonp: 'callback',
+        success : function(json){
+          alert('登陆成功');
+        }
+      });
+    };
+    $scope.add = function () {
+      console.log($scope.addUser);
+      $.ajax({
+        type : "POST",
+        url : "/add",
+        data:$scope.addUser,
+        //dataType : "jsonp",
+        //jsonp: 'callback',
+        success : function(json){
+          alert('注册成功')
+        }
+      });
+    };
+    $scope.getAll = function () {
+      $.ajax({
+        type : "GET",
+        url : "/getAll",
+        //jsonp: 'callback',
+        success : function(json){
+          $scope.users = json.data;
+          console.log($scope.users)
+        }
+      });
+    };
+    $scope.delUser = function (id) {
+      $.ajax({
+        type : "DELTE",
+        url : "/delUser/"+id,
+        //jsonp: 'callback',
+        success : function(json){
+          alert('删除成功'+json);
+        }
+      });
+    }
+    $scope.logout = function () {
+      $.ajax({
+        type : "GET",
+        url : "/logout",
+        //jsonp: 'callback',
+        success : function(json){
+          $scope.users = json.data;
+          console.log($scope.users)
+        }
+      });
+    }
+    $scope.vcode = function () {
+      $.ajax({
+        type : "GET",
+        url : "/vcode",
+        //jsonp: 'callback',
+        success : function(json){
+          $scope.users = json.data;
+          console.log($scope.users)
+        }
+      });
+    }
+  });
+</script>
+</html>
