@@ -37,11 +37,11 @@
     border: solid 1px black;
     background-color: #ebebeb;
     color: black;
-    margin-left: 2%;
+    margin-left: 4%;
     vertical-align:middle;
     float:left;
     display:inline;
-    margin-top: 1%;
+    margin-top: 4%;
     line-height: 100px;;
     overflow:hidden;
     text-align:center;
@@ -54,8 +54,8 @@
 <body ng-app="selectapp" ng-controller="selCtrl">
 <div id="top">中华慈善总会援助项目管理平台</div>
 <div id="middle">
-  <h3 style="color: red">请选择名下管理的项目:</h3>
-  <div id="pro" ng-repeat="pro in project">
+  <h3 style="color: red;padding-top: 4%;padding-left: 1%">请选择名下管理的项目:</h3>
+  <div id="pro" ng-repeat="pro in project" ng-click="ject(pro)">
     {{pro}}
   </div>
 </div>
@@ -63,6 +63,10 @@
   var app = angular.module('selectapp',[]);
   app.controller('selCtrl',function ($scope,$http) {
     $scope.project = ['格列卫','达希纳','多吉美','易瑞沙','敌敌畏'];
+
+    $scope.ject = function (p) {
+      alert(p);
+    }
 
 
   })

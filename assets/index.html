@@ -19,7 +19,7 @@
   .vertical-center{
     position: absolute;
     top: 50%;
-    left: 40%;
+    left: 50%;
     transform: translate(-50%, -50%);
   }
   .size{
@@ -38,7 +38,7 @@
 </style>
 <body ng-app="myApp" ng-controller="userCtrl" class="vertical-center">
 <div style="align-content: center">
-<h4 style="align-content: center">中国慈善总会业务管理系统</h4>
+<h4 style="text-align: center">中国慈善总会业务管理系统</h4>
 </div>
 <br><br>
 <div  style="align-content: center;margin-left: 0">
@@ -105,6 +105,9 @@
         success : function(json){
           alert('登陆成功');
           window.location = '/select.html'
+        },
+        error:function () {
+          alert('登录失败')
         }
       });
     };
