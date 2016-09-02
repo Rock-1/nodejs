@@ -63,7 +63,9 @@ module.exports.routes = {
   //md5
   'get /md5': 'UserController.md5',
   //验证码
-  'get /vcode': 'UserController.vcode'
+  'get /vcode': 'UserController.vcode',
+  //img save
+  'get /addImg': 'UserController.addImg'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

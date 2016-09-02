@@ -163,6 +163,11 @@ module.exports = {
     req.session.user = null;
     res.json({status:201})
   },
+  /**
+   * md5加密
+   * @param req
+   * @param res
+   */
   md5 : function (req,res) {
     const secret = 'abcdefg';
     const hash = crypto.createHmac('sha256', secret)
@@ -171,6 +176,10 @@ module.exports = {
     console.log(hash);
 
     res.json(hash);
+  },
+  addImg:function (req,res) {
+    console.log(req.body);
+    res.json({status:200})
   }
 };
 
