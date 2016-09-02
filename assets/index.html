@@ -19,7 +19,7 @@
   .vertical-center{
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 40%;
     transform: translate(-50%, -50%);
   }
   .size{
@@ -37,29 +37,42 @@
   /*}*/
 </style>
 <body ng-app="myApp" ng-controller="userCtrl" class="vertical-center">
+<div style="align-content: center">
+<h4 style="align-content: center">中国慈善总会业务管理系统</h4>
+</div>
+<br><br>
+<div  style="align-content: center;margin-left: 0">
+  <br>
+  账    号  ：<input type="text" class="" style="width: 80%" ng-model = "addUser.Name" placeholder="姓名"><br>
+  <br>
+  密    码  ：<input type="password" style="width: 80%" ng-model="addUser.password"><br>
+  <br>
 
-<h2 style="align-content: center">注册</h2>
-<div  style="align-content: center">
-  姓名  ：<input type="text" class="in" ng-model = "addUser.Name" placeholder="姓名"><br>
-  密码  ：<input type="password" ng-model="addUser.password"><br>
-  email ：<input type="email">
   <div >
-    验证码:<input type="text" style="vertical-align:middle;">
-    <img style="-webkit-user-select: none;vertical-align:middle;" src="/vcode" ng-click="this.src='/vcode'" >
+    <div style="width: 50%;float: left">
+    验证码:<input type="text" style="vertical-align:middle;width: 60%">
+    </div>
+    <div style='width: 50%;float:right;'>
+    <img style="-webkit-user-select: none;vertical-align:middle;width: 70%;height: 40%" src="/vcode" ng-click="this.src='/vcode'" >
+
+    </div>
   </div>
+  <br>
+  <br>
+  <button class="btn btn-success btn-primary btn-lg btn-block" ng-click = 'login()'>登录</button>
 </div>
 {{name}}{{pw}}
 
-<button class="btn" ng-click = 'add()'>注册</button>
-<button class="btn btn-success" ng-click = 'login()' >login</button>
-<button class="btn btn-secess" ng-click = 'logout()'>logout</button>
-<button  class="btn btn-info" ng-click="getAll()">查看所有用户</button>
-<div >
-  <li ng-repeat="x in users">
-    {{x.Name}}
-    <button ng-click="delUser(x.id)">删除</button>
-  </li>
-</div>
+<!--<button class="btn" ng-click = 'add()'>注册</button>-->
+<!--<button class="btn btn-success" ng-click = 'login()' >login</button>-->
+<!--<button class="btn btn-secess" ng-click = 'logout()'>logout</button>-->
+<!--<button  class="btn btn-info" ng-click="getAll()">查看所有用户</button>-->
+<!--<div >-->
+  <!--<li ng-repeat="x in users">-->
+    <!--{{x.Name}}-->
+    <!--<button ng-click="delUser(x.id)">删除</button>-->
+  <!--</li>-->
+<!--</div>-->
 
 </body>
 <script>
@@ -91,6 +104,7 @@
         //jsonp: 'callback',
         success : function(json){
           alert('登陆成功');
+          window.location = '/select.html'
         }
       });
     };
