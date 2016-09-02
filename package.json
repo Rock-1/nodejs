@@ -5,6 +5,7 @@
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
+    "ccap": "^0.6.10",
     "crypto": "0.0.3",
     "ejs": "2.3.4",
     "grunt": "1.0.1",
@@ -20,12 +21,14 @@
     "grunt-sails-linker": "~0.10.1",
     "grunt-sync": "0.5.2",
     "include-all": "~0.1.6",
+    "mysql": "^2.11.1",
     "node-gyp": "^3.4.0",
     "passport": "^0.3.2",
     "rc": "1.0.1",
     "sails": "~0.12.4",
     "sails-disk": "~0.10.9",
-    "sails-mongo": "^0.12.1"
+    "sails-mongo": "^0.12.1",
+    "socket.io": "^1.4.8"
   },
   "scripts": {
     "debug": "node debug app.js",

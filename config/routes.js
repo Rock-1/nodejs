@@ -49,7 +49,9 @@ module.exports.routes = {
   //登出
   'get /logout' : 'UserController.logout',
   //md5
-  'get /md5': 'UserController.md5'
+  'get /md5': 'UserController.md5',
+  //验证码
+  'get /vcode': 'UserController.vcode'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

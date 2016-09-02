@@ -7,6 +7,35 @@
 
 var passport = require('passport');
 var crypto = require('crypto');
+var ccap = require('ccap');
+var socketio = require('socket.io');
+var mysql = require('mysql');
+
+//var captcha = ccap(width, height, offset);
+
+var captcha = ccap({
+
+  width:150,//set width,default is 256
+
+  height:40,//set height,default is 60
+
+  offset:20,//set text spacing,default is 40
+
+  quality:50,//set pic quality,default is 50
+
+  fontsize: 30,
+
+  _text_len:4
+
+  //generate:function(){//Custom the function to generate captcha text
+
+  //generate captcha text here
+
+  // return text;//return the captcha text
+
+  //}
+
+});
 
 module.exports = {
   /**
@@ -104,6 +133,26 @@ module.exports = {
       .catch(function (err) {
         res.json(err)
       })
+  },
+  /**
+   * 生成验证码
+   * @param req
+   * @param res
+   */
+  vcode:function (req, res) {
+    if(req.url == '/favicon.ico')return res.end('');//Intercept request favicon.ico
+
+    var ary = captcha.get();
+
+    var txt = ary[0];
+
+    var buf = ary[1];
+
+    res.end(buf);
+    req.session.icode = txt;
+    //req.session.user = null;
+    console.log(req.session.icode);
+    res.json({status:201})
   },
   /**
    * 处理登出逻辑
